@@ -8,7 +8,8 @@
 import UIKit
 
 class ViewController: UIViewController {
-  @IBOutlet var slider: UISlider!
+  @IBOutlet weak var slider: UISlider!
+  @IBOutlet weak var targetLabel: UILabel!
   var targetValue: Int = 0
   var currentValue: Int = 0
   
@@ -16,6 +17,8 @@ class ViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    slider.minimumValue = Float(sliderData.min)
+    slider.maximumValue = Float(sliderData.max)
     startNewRound()
   }
   
@@ -45,6 +48,11 @@ class ViewController: UIViewController {
     targetValue = Int.random(in: sliderData.min...sliderData.max)
     currentValue = sliderData.middle
     slider.value = Float(currentValue)
+    updateLabels()
+  }
+  
+  private func updateLabels(){
+    targetLabel.text = String(targetValue)
   }
 }
 

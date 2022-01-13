@@ -8,10 +8,12 @@
 import UIKit
 
 class ViewController: UIViewController {
-  var currentValue: Int = 50
+  @IBOutlet var slider: UISlider!
+  var currentValue: Int = 0
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    currentValue = lroundf(slider.value)
   }
   
   @IBAction func showAlert() {
